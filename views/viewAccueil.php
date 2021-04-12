@@ -7,5 +7,5 @@ ob_start();
             facilis cumque, maiores non libero. Dolorem, totam et! In nemo hic vitae, debitis eveniet nam tempora!
         </div>
 <?php 
-$contenu = ob_get_clean(); 
+$contenu = ob_get_clean();
 ?>

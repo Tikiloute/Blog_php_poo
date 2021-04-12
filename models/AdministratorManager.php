@@ -2,15 +2,11 @@
 
 class AdministratorManager extends Manager
 {   
-
-    public function admin()
+    public function test()
     {
-        $stm = $this->db->prepare('SELECT identifiant, password from administrateur');
-        $stm->execute();
-         
-        return $stm->fetch(); 
-        
+        echo "coucou";
     }
+    
 }
 
 
