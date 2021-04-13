@@ -1,8 +1,8 @@
 <?php
 ob_start();
 ?>
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
+<div class="card mx-auto mb-3 col-6">
+  <div class="card-body mx-auto">
     <h5 class="card-title"><?= $art['titre']  ?></h5>
     <p class="card-text"><?= $art['contenu']?></p>
   </div>

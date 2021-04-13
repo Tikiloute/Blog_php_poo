@@ -5,7 +5,7 @@ namespace Controllers;
 class ArticleController extends Controller
 {
     public function article()
-    {
+    {   
         $art = $this->article->read($_GET['id']);
         require('views\viewArticle.php');
     }

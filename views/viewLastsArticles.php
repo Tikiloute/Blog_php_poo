@@ -1,7 +1,11 @@
-<?php 
+<?php
+ob_start(); 
+?>
+<h3>Derniers articles publiés</h3>
+<?php
 for($i = 0; $i < 3; $i++){
 ?>
-<div class="card text-center " style="width: 18rem;">
+<div class="card text-center mx-auto mb-3 col-6" >
   <div class="card-body">
     <h5 class="card-title"><?= $articles[$i]['titre']  ?></h5>
     <p class="card-text"><?= $articles[$i]['contenu']?></p>
@@ -11,3 +15,4 @@ for($i = 0; $i < 3; $i++){
     
 <?php
 }
+$content = ob_get_clean();
