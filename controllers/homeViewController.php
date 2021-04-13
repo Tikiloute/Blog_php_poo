@@ -1,15 +1,17 @@
 <?php
+
 namespace Controllers;
 
-class HomeController extends Controller
+class HomeViewController extends Controller
 {
-    public function homePage()
+    public function lastsArticles($article)
     {
-        require('views\viewHome.php');
+        require('views\viewAccueil.php');
         require_once('template.php');
         $count = $this->article->countArticles();
         $articles = $this->article->readAll();
         require('views\viewLastsArticles.php');
+        require('views\viewCreateArticle.php');
     }
 
 }

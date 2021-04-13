@@ -1,6 +1,6 @@
 <?php
-require_once('models\ArticleManager.php');
-require_once('controllers\Controller.php');
+
+namespace Controllers;
 
 class ArticleController extends Controller
 {

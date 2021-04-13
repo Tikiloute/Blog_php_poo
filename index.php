@@ -1,8 +1,10 @@
 <?php 
-require_once("controllers\HomeController.php");
-require_once("controllers\ArticleController.php");
-$homeController = new HomeController();
-$articleController = new ArticleController();
+
+require_once('controllers\autoload.php');
+
+$homeController = new \Controllers\HomeController();
+$articleController = new \Controllers\ArticleController();
+$administratorController = new \Controllers\AdministratorController();
 
 if(empty($_GET["action"])){
     $homeController->homePage();

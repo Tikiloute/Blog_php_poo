@@ -1,4 +1,6 @@
 <?php 
+namespace Models;
+
 require_once('models\Manager.php');
 
 class ArticleManager extends Manager

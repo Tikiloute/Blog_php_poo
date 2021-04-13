@@ -1,4 +1,5 @@
 <?php 
+namespace Models;
 
 abstract class Manager 
 {
@@ -7,8 +8,8 @@ abstract class Manager
     public function __construct()
     {
         try {
-            $this->db = new PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', ''); 
-        } catch(PDOException $e) {
+            $this->db = new \PDO('mysql:host=localhost;dbname=projet4;charset=utf8', 'root', ''); 
+        } catch(\PDOException $e) {
             print "erreur".$e->getMessage();
             die();
         }
