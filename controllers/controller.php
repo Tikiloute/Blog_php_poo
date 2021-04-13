@@ -1,14 +1,13 @@
 <?php
+require_once('models\ArticleManager.php');
 
 abstract class Controller {
 
+    protected $article;
+
     public function __construct()
     {
-        
+        $this->article = new ArticleManager();
     }
 
-    public function affiche()
-    {
-        require_once('views\viewAccueil.php');
-    }
 }

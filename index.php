@@ -1,27 +1,27 @@
 <?php 
-require_once("controllers\HomeViewController.php");
+require_once("controllers\HomeController.php");
 require_once("controllers\ArticleController.php");
-$homeController = new HomeViewController();
+$homeController = new HomeController();
 $articleController = new ArticleController();
 
 if(empty($_GET["action"])){
-    $homeController->lastsArticles($article);
+    $homeController->homePage();
 } else{
    switch($_GET["action"]){
         case "accueil" :
-            $homeController->lastsArticles($article);
+            $homeController->homePage();
         break;
 
         case "article" : 
-            $articleController->article($article);
+            $articleController->article();
         break;
 
         case "articles" : 
-            $articleController->allArticle($article);
+            $articleController->allArticle();
         break;
 
         case "admin" : 
-            $articleController->writeArticle($article);
+            $articleController->writeArticle();
         break;
    }
 }
