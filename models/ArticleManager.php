@@ -31,7 +31,7 @@ class ArticleManager extends Manager
         return $count; 
     }
 
-    public function new_article(string $title, string $content): void 
+    public function newArticle(string $title, string $content): void 
     {
         $stm = $this->db->prepare("INSERT INTO article(titre, contenu) VALUES(:title, :content)");
         $stm->bindParam(":title", $title);

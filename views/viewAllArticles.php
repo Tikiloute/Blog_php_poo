@@ -12,5 +12,9 @@ for($i = 0; $i < $count[0]; $i++){
     
 <?php
 }
+?>
+<br>
+<br>
+<?php
 $contenu = ob_get_clean();
-require_once('template.php');
+require('template.php');

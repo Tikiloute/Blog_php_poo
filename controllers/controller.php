@@ -1,8 +1,6 @@
 <?php
 namespace Controllers;
 
-require_once('models\ArticleManager.php');
-
 abstract class Controller {
 
     protected $article;
@@ -11,6 +9,7 @@ abstract class Controller {
     public function __construct()
     {
         $this->article = new \Models\ArticleManager();
+        $this->comment = new \Models\CommentManager();
     }
 
 }

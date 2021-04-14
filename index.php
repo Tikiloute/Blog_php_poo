@@ -1,10 +1,11 @@
 <?php 
-
+session_start();
 require_once('controllers\autoload.php');
 
 $homeController = new \Controllers\HomeController();
 $articleController = new \Controllers\ArticleController();
 $administratorController = new \Controllers\AdministratorController();
+$commentController = new \Controllers\CommentController();
 
 if(empty($_GET["action"])){
     $homeController->homePage();
@@ -14,8 +15,9 @@ if(empty($_GET["action"])){
             $homeController->homePage();
         break;
 
-        case "article" : 
+        case "article" :
             $articleController->article();
+            $commentController->comment(); 
         break;
 
         case "articles" : 
@@ -23,7 +25,8 @@ if(empty($_GET["action"])){
         break;
 
         case "admin" : 
-            $articleController->writeArticle();
+            $administratorController->writeArticle();
+            $administratorController->connection();
         break;
    }
 }

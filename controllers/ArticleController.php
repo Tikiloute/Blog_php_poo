@@ -21,7 +21,7 @@ class ArticleController extends Controller
     {
         require('views\viewCreateArticle.php');
         if (!empty($_POST['titre']) && !empty($_POST['contenu'])){
-            $this->article->new_article($_POST['titre'], $_POST['contenu']);
+            $this->article->newArticle($_POST['titre'], $_POST['contenu']);
             echo "<div class='alert alert-success text-center'>Votre article a bien été envoyé</div>";
         }
     }

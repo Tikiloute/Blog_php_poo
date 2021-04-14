@@ -11,7 +11,7 @@
         <link type="text/css" rel="stylesheet" href="style.css">
 
     </head>
-    <body>
+    <body class="d-flex flex-column">
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5 color-navBar">
             <div class="container-fluid">
@@ -25,17 +25,17 @@
                         <a class="nav-link active" aria-current="page" href="accueil">Accueil</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=articles&amp;page=1">Articles</a>
+                        <a class="nav-link" href="articles">Articles</a>
                         </li>
                         <li class="nav-item">
                     <?php if(isset($_SESSION["identify"],$_SESSION["identify"])){ ?>
-                        <a class="nav-link" href="index.php?action=admin">Gérer votre site</a>
+                        <a class="nav-link" href="admin">Gérer votre site</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="index.php?action=logout">Se déconnecter</a>
+                        <a class="nav-link" href="logout">Se déconnecter</a>
                         </li>
                     <?php } else { ?>
-                        <a class="nav-link" href="index.php?action=admin">Se connecter</a>
+                        <a class="nav-link" href="admin">Se connecter</a>
                     <?php } ?>
                         </li>
                     </ul>
@@ -43,24 +43,27 @@
             </div>
             </nav>
         </header>
+        <div  class='mt-auto text-center'>
             <?php 
                 if(!empty($contenu)){
                     echo $contenu;
                 }; 
-                
+            ?>
+        </div> 
+        <div class='mt-auto text-center'>
+            <?php      
                 if(!empty($content)){
                     echo $content;
                 }
             ?>
-        <footer>
-            <nav class="navbar bottom navbar-dark bg-primary">
-            <div class="">
-                <a class="navbar-brand" href="#">Accueil</a>
-                <a class="navbar-brand" href="#">Twitter</a>
-                <a class="navbar-brand" href="#">Facebook</a>
-            </div>
-            </nav>
-        </footer>
+        </div>
+        <div class='mt-auto text-center'>
+            <?php      
+                if(!empty($container)){
+                    echo $container;
+                }
+            ?>
+        </div>
     </body>
     </html>
 

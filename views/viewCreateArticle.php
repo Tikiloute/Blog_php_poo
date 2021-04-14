@@ -3,10 +3,10 @@ ob_start();
 ?>
         <script>
             tinymce.init({
-                selector: '#mytextarea'
+                selector: '#mytextarea',
             });
         </script>
-        <div>
+        <div >
             <h2 class="write-article">Bonjour</h2>
             <h3 class="write-article">Créer votre article ici</h3>
             <form action="#" method="POST" class="card mx-auto col-6">
