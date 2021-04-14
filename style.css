@@ -21,6 +21,11 @@ body::after{
     z-index: -1;
 }
 
+.intro{
+    color:#384454;
+    font-weight: 500;
+}
+
 h1, h2, h3, h4, h5, h6{
     text-align: center;
 }
@@ -28,6 +33,27 @@ h1, h2, h3, h4, h5, h6{
 p{
     margin-left: 3vw;
     margin-right: 3vw;
+}
+
+.disconnect{
+    color:yellow !important;
+    font-weight: 500;
+}
+
+.disconnect:hover{
+    color: rgb(255, 196, 0) !important;
+    font-weight: 600;
+}
+
+.text-white:hover{
+    color :rgba(255, 255, 255, 0.911) ;
+    font-weight: 500;
+}
+
+.hr{
+    display: block;
+    width:50%;
+    margin:auto;
 }
 
 

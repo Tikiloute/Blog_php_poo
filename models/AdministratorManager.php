@@ -10,6 +10,13 @@ class AdministratorManager extends Manager
         $articles = $stm->fetch();
         return $articles; 
     }
+
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        header('location:admin');
+    }
     
 }
 

@@ -12,6 +12,15 @@ class CommentManager extends Manager
         return $comments; 
     }
 
+    public function read():array
+    {
+        $stm = $this->db->prepare('SELECT * from commentaire INNER JOIN WHERE idArticle = :id');
+        $stm->bindParam(":id", $id);
+        $stm->execute();
+        $count = $stm->fetch();
+        return $count; 
+    }
+
     public function countComment(int $id) : array
     {   
         $stm = $this->db->prepare('SELECT count(idArticle) from commentaire WHERE idArticle = :id');

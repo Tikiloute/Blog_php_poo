@@ -15,27 +15,27 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5 color-navBar">
             <div class="container-fluid">
-                <a class="navbar-brand color-navBar" href="index.php">Blog de Jean Forteroche</a>
+                <a class="navbar-brand color-navBar" href="accueil">Blog de Jean Forteroche</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="accueil">Accueil</a>
+                        <a class="nav-link text-white" aria-current="true" href="accueil">Accueil</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="articles">Articles</a>
+                        <a class="nav-link text-white" href="articles">Articles</a>
                         </li>
                         <li class="nav-item">
-                    <?php if(isset($_SESSION["identifiant"],$_SESSION["password"])){ ?>
-                        <a class="nav-link" href="admin">Gérer votre site</a>
+                    <?php if(!empty($_SESSION['connected']) && $_SESSION['connected'] === true){ ?>
+                        <a class="nav-link text-white" href="admin">Gérer votre site</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link" href="logout">Se déconnecter</a>
+                        <a class="nav-link disconnect" href="logout">Se déconnecter</a>
                         </li>
                     <?php } else { ?>
-                        <a class="nav-link" href="admin">Se connecter</a>
+                        <a class="nav-link text-white" href="admin">Se connecter</a>
                     <?php } ?>
                         </li>
                     </ul>
@@ -43,14 +43,14 @@
             </div>
             </nav>
         </header>
-        <div  class='mt-auto text-center'>
+        <div  class='mt-2 text-center'>
             <?php 
                 if(!empty($contenu)){
                     echo $contenu;
                 }; 
             ?>
         </div> 
-        <div class='mt-auto text-center'>
+        <div class='mt-2 text-center'>
             <?php      
                 if(!empty($content)){
                     echo $content;
@@ -63,7 +63,7 @@
                     echo $container;
                 }
             ?>
-        </div>
+        </div>    
     </body>
     </html>
 

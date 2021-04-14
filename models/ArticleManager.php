@@ -1,14 +1,12 @@
 <?php 
 namespace Models;
 
-require_once('models\Manager.php');
-
 class ArticleManager extends Manager
 {
 
     public function readAll(): array
     {
-        $stm = $this->db->prepare('SELECT id, titre, contenu from article ORDER BY id DESC');
+        $stm = $this->db->prepare('SELECT id, titre, SUBSTRING(contenu, 1, 250) AS contenu from article ORDER BY id DESC');
         $stm->execute();
         $articles = $stm->fetchAll();
         return $articles; 

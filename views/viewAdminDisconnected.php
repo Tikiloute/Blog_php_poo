@@ -18,6 +18,6 @@ ob_start();
 </form>
 
 <?php
-$contenu = ob_get_clean();
+$content = ob_get_clean();
 require_once('template.php');
 ?>
