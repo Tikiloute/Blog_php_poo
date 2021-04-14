@@ -1,3 +1,6 @@
+<?php
+ob_start();
+?>
 <form action="#" method="POST">
     <div class="col-12 mt-5">
         <div class="mb-3 col-3  mx-auto">
@@ -13,3 +16,8 @@
         </div>
     </div>
 </form>
+
+<?php
+$contenu = ob_get_clean();
+require_once('template.php');
+?>

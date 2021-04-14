@@ -25,7 +25,6 @@ if(empty($_GET["action"])){
         break;
 
         case "admin" : 
-            $administratorController->writeArticle();
             $administratorController->connection();
         break;
    }

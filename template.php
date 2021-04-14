@@ -28,7 +28,7 @@
                         <a class="nav-link" href="articles">Articles</a>
                         </li>
                         <li class="nav-item">
-                    <?php if(isset($_SESSION["identify"],$_SESSION["identify"])){ ?>
+                    <?php if(isset($_SESSION["identifiant"],$_SESSION["password"])){ ?>
                         <a class="nav-link" href="admin">Gérer votre site</a>
                         </li>
                         <li class="nav-item">
