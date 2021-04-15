@@ -8,7 +8,7 @@ ob_start();
         });
     </script>
     <a href='article&id=<?= $_GET['id'] ?>' class="btn btn-light text-primary mb-2">Revenir à l'article</a>
-    <form action="modify" method="POST" class="card mx-auto col-6" >
+    <form action="update&id=<?= $_GET['id'] ?>" method="POST" class="card mx-auto col-6" >
         <input type="hidden" name="idArticle" value="<?= $_GET['id'] ?>">
         <textarea placeholder="titre" name="titreArticle"><?= $art['titre'] ?></textarea>
         <textarea id="ModifyTextArea"  placeholder="contenu" style="height: 50vh" name="contenuArticle"><?= $art['contenu']?></textarea>

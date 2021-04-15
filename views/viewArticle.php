@@ -13,10 +13,11 @@ if(isset($_GET["report"])){
       <h5 class="card-title"><?= $art['titre']  ?></h5>
       <hr class="hr">
       <p class="card-text"><?= $art['contenu']?></p>
+      <hr class="hr">
 <?php 
   if(isset($_SESSION['connected']) && $_SESSION['connected'] === true){
 ?>
-      <a href="modify&id=<?= $_GET['id']?>" class="btn btn-success shadow-sm">Modifier l'article</a>
+      <a href="modify&id=<?= $_GET['id']?>" class="btn btn-success shadow-sm mt-4">Modifier l'article</a>
 <?php 
   }
 ?>

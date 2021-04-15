@@ -77,4 +77,11 @@ class AdministratorController extends Controller
         exit();
     }
 
+    public function updateArticle(): void
+    {
+        $this->article->updateArticle($_POST['titreArticle'], $_POST['contenuArticle'], $_GET['id']);
+        header("Location: modify&id=".$_GET['id']);
+        exit();
+    }
+
 }

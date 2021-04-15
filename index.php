@@ -51,6 +51,10 @@ if(empty($_GET["action"])){
         case "validateReportComment" :
             $administratorController->validateReportComment();
         break;
+
+        case "update" :
+            $administratorController->updateArticle();
+        break;
         
 
    }

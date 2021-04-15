@@ -7,7 +7,8 @@ for($i = 0; $i < $count[0]; $i++){
     <h5 class="card-title"><?= $articles[$i]['titre'] ?></h5>
     <hr class="hr">
     <p class="card-text"><?= $articles[$i]['contenu'].'...'?></p>
-    <a href="article&id=<?= $articles[$i]['id']?>" class="btn btn-primary">Aller sur l'article</a>
+    <hr class="hr">
+    <a href="article&id=<?= $articles[$i]['id']?>" class="btn btn-primary mt-4">Aller sur l'article</a>
   </div>
 </div>
 <br>
