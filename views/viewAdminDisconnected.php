@@ -1,6 +1,8 @@
 <?php
 ob_start();
 ?>
+<h3>Espace connexion</h3>
+<hr class="hr">
 <form action="#" method="POST">
     <div class="col-12 mt-5">
         <div class="mb-3 col-3  mx-auto">

@@ -12,7 +12,7 @@ class ArticleManager extends Manager
         return $articles; 
     }
 
-    public function read($id): array
+    public function read(int $id): array
     {
         $stm = $this->db->prepare('SELECT id, titre, contenu from article WHERE id = :id');
         $stm->bindParam(":id", $id);

@@ -11,7 +11,7 @@ class AdministratorManager extends Manager
         return $articles; 
     }
 
-    public function logout()
+    public function logout(): void
     {
         session_start();
         session_destroy();
@@ -19,6 +19,5 @@ class AdministratorManager extends Manager
     }
     
 }
-
 
 ?>

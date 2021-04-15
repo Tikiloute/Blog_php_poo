@@ -22,17 +22,17 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                        <a class="nav-link text-white" aria-current="true" href="accueil">Accueil</a>
+                            <a class="nav-link text-white" aria-current="true" href="accueil">Accueil</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link text-white" href="articles">Articles</a>
+                            <a class="nav-link text-white" href="articles">Articles</a>
                         </li>
                         <li class="nav-item">
                     <?php if(!empty($_SESSION['connected']) && $_SESSION['connected'] === true){ ?>
-                        <a class="nav-link text-white" href="admin">Gérer votre site</a>
+                            <a class="nav-link text-white" href="admin">Gérer votre site</a>
                         </li>
                         <li class="nav-item">
-                        <a class="nav-link disconnect" href="logout">Se déconnecter</a>
+                            <a class="nav-link disconnect" href="logout">Se déconnecter</a>
                         </li>
                     <?php } else { ?>
                         <a class="nav-link text-white" href="admin">Se connecter</a>
@@ -63,7 +63,10 @@
                     echo $container;
                 }
             ?>
-        </div>    
+        </div>
+    <footer class='bg-primary text-white'>
+        <div id="copyright">www.Celemma.eu © All rights reserved</div>
+    </footer>        
     </body>
     </html>
 

@@ -30,7 +30,7 @@ class CommentManager extends Manager
         return $count; 
     }
 
-    public function newCommentary($pseudo, $comment, int $idArticle): void
+    public function newCommentary(mixed $pseudo, mixed $comment, int $idArticle): void
     {
         $stm = $this->db->prepare('INSERT INTO commentaire(identifiant, commentaire, idArticle, date) VALUES(:id, :comment, :idArticle, NOW())');
         $stm->bindParam(":id", $pseudo);

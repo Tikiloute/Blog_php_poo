@@ -8,7 +8,6 @@ class HomeController extends Controller
         $count = $this->article->countArticles();
         $articles = $this->article->readAll();
         require_once('views\viewHome.php');
-        require_once('views\viewLastsArticles.php');
         require_once('template.php');
     }
 

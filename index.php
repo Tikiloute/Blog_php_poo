@@ -16,8 +16,8 @@ if(empty($_GET["action"])){
         break;
 
         case "article" :
-            $articleController->article();
             $commentController->comment();
+            $articleController->article();
         break;
 
         case "articles" : 
@@ -32,8 +32,12 @@ if(empty($_GET["action"])){
             $administratorController->logout();
         break;
 
-        case "delete" : 
+        case "report" : 
             $administratorController->reportComments();
+        break;
+
+        case "modify" :
+            $articleController->modifyArticle();
         break;
    }
 }
