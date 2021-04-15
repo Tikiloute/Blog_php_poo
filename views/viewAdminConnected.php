@@ -34,13 +34,15 @@ if($_SESSION['connected'] === true){
             <div class="card-body shadow-lg text-center">
                 <h5 class="card-title"><?= $reportComment[$i]['identifiant'] ?></h5>
                 <hr class="hr">
-                <p class="card-text"><?= "A écrit: ".$reportComment[$i]['commentaire']?></p>
+                <p class="card-text mt-2"><?= 'A écrit: "'.$reportComment[$i]['commentaire'].'"'?></p>
                 <hr class="hr">
-                <p class="card-text"><?= "Le ".$reportComment[$i]['date']?></p>
+                <p class="card-text mt-2"><?= "Le ".$reportComment[$i]['date']?></p>
                 <hr class="hr">
-                <p>Concernant l'article: <a href="article&id=<?= $reportComment[$i]['idArticle']?>" class="text-primary"><?= $reportComment[$i]['nomArticle'] ?></a></p>
-                <a href="" class="btn btn-success">Valider le commentaire</a>
-                <a href="" class="btn btn-danger">Supprimer le commentaire</a>
+                <p class="card-text mt-2">Concernant l'article: <a href="article&id=<?= $reportComment[$i]['idArticle']?>" class="text-primary"><?= $reportComment[$i]['nomArticle'] ?></a></p>
+                <hr class="hr">
+                <p class="card-text mt-2 mb-4">Nombre de signalement <span class="badge bg-danger">0-1-2-3</span></p>
+                <a href="validateReportComment&id=<?= $reportComment[$i]['id']?>" class="btn btn-success">Valider le commentaire</a>
+                <a href="deleteReportComment&id=<?= $reportComment[$i]['idCommentaire']?>" class="btn btn-danger">Supprimer le commentaire</a>
             </div>
             </div>
             <br>

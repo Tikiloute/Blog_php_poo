@@ -5,7 +5,7 @@ class ReportCommentManager extends Manager
 {
     public function readAll(): array
     {
-        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, date, nomArticle, idArticle from commentaire_moderation');
+        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, date, nomArticle, idCommentaire, idArticle from commentaire_moderation');
         $stm->execute();
         $comments = $stm->fetchAll();
         return $comments; 
@@ -29,6 +29,20 @@ class ReportCommentManager extends Manager
         $stm->execute();
         $count = $stm->fetch();
         return $count; 
+    }
+
+    public function deleteReportComment(int $id): void
+    {
+        $stm = $this->db->prepare("DELETE FROM commentaire WHERE id = :id");
+        $stm->bindParam(":id", $id);
+        $stm->execute();
+    }
+
+    public function validateReportComment(int $id) : void
+    {
+        $stm = $this->db->prepare("DELETE FROM commentaire_moderation WHERE id = :id");
+        $stm->bindParam(":id", $id);
+        $stm->execute();
     }
 
 }

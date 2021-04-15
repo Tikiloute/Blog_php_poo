@@ -39,6 +39,20 @@ if(empty($_GET["action"])){
         case "modify" :
             $articleController->modifyArticle();
         break;
+
+        case "deleteArticle" :
+            $administratorController->deleteArticle();
+        break;
+
+        case "deleteReportComment" :
+            $administratorController->deleteReportComment();
+        break;
+
+        case "validateReportComment" :
+            $administratorController->validateReportComment();
+        break;
+        
+
    }
 }
 

@@ -1,5 +1,16 @@
 <?php
 ob_start();
+if(!empty($_POST['identifiant']) || !empty($_POST['password'])){
+    if($_SESSION['identifiant'] != $adm["identifiant"] || password_verify($_SESSION['password'], $adm["password"]) === false){
+?>
+        <div class='alert alert-danger text-center'>Identifiant et / ou mot de passe erroné(s)!</div>
+<?php
+    }
+}else {
+?>
+        <div class='alert alert-danger text-center'>Champs identifiant et / ou mot de passe vide(s)!</div>
+<?php
+}
 ?>
 <h3>Espace connexion</h3>
 <hr class="hr">

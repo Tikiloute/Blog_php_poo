@@ -32,7 +32,7 @@
                             <a class="nav-link text-white" href="admin">Gérer votre site</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link disconnect" href="logout">Se déconnecter</a>
+                            <a class="nav-link disconnect ml-5" href="logout">Se déconnecter</a>
                         </li>
                     <?php } else { ?>
                         <a class="nav-link text-white" href="admin">Se connecter</a>

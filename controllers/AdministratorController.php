@@ -6,13 +6,13 @@ class AdministratorController extends Controller
 {
     public function connection(): void
     {
+        $adm = $this->admin->adminProfile();
         if(!empty($_POST['identifiant']) && !empty($_POST['password'])){
             $username = $_POST['identifiant'];
             $password = $_POST['password'];
             $_SESSION['identifiant'] = $username;
             $_SESSION['password'] = $password;
         }
-        $adm = $this->admin->adminProfile();
         if(!empty($_POST['identifiant']) && !empty($_POST['password']) && empty($_SESSION['identifiant']) && empty($_SESSION['password'])){
             require_once('views\viewAdminDisconnected.php');
         }elseif(!empty($_SESSION['identifiant']) && !empty($_SESSION['password'])){
@@ -22,7 +22,6 @@ class AdministratorController extends Controller
                 $this->writeArticle();
             }else{
                 require_once('views\viewAdminDisconnected.php');
-                echo "<div class='alert alert-danger text-center'>Identifiant et / ou mot de passe érroné(s)!</div>";
             }
         }else{
             require_once('views\viewAdminDisconnected.php');
@@ -55,6 +54,27 @@ class AdministratorController extends Controller
         $reportComment = $this->report->readAll();
         $count = $this->report->count();
         require_once('views\viewAdminConnected.php');
+    }
+
+    public function deleteArticle() : void
+    {
+        $this->article->deleteArticle($_GET['id']);
+        header("Location: articles");
+        exit();
+    }
+
+    public function deleteReportComment() : void
+    {
+        $this->report->deleteReportComment($_GET['id']);
+        header("Location: admin");
+        exit();
+    }
+
+    public function validateReportComment() : void
+    {
+        $this->report->validateReportComment($_GET['id']);
+        header("Location: admin");
+        exit();
     }
 
 }

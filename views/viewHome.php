@@ -21,7 +21,8 @@ ob_start();
         <a href="article&id=<?= $articles[$i]['id']?>" class="btn btn-primary">Aller sur l'article</a>
     </div>
     </div>
-    
+    <br>
+    <br>
 <?php
 }
 $contenu = ob_get_clean();

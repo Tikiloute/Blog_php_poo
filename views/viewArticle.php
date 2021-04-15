@@ -1,5 +1,11 @@
 <?php
 ob_start();
+if(isset($_GET["addComment"])){
+  echo "<div class='alert alert-success text-center'>Votre commentaire a bien été envoyé</div>";
+}
+if(isset($_GET["report"])){
+  echo "<div class='alert alert-success text-center'>Votre signalement a bien été envoyé</div>";
+}
 ?>
 
   <div class="card text-left mx-auto mb-3 col-6">
@@ -32,12 +38,6 @@ ob_start();
   </div>
 
 <?php
-  if(isset($_GET["addComment"])){
-  echo "<div class='alert alert-success text-center'>Votre commentaire a bien été envoyé</div>";
-  }
-  if(isset($_GET["report"])){
-    echo "<div class='alert alert-success text-center'>Votre signalement a bien été envoyé</div>";
-  }
   if($count[0]>0){
 ?>
 
@@ -52,9 +52,9 @@ ob_start();
     <div class="card-body shadow-lg text-center">
       <h5 class="card-title"><?= $comments[$i]['identifiant'] ?></h5>
       <hr class="hr">
-      <p class="card-text"><?= $comments[$i]['commentaire']?></p>
+      <p class="card-text mt-2"><?= 'A dit : '.$comments[$i]['commentaire']?></p>
       <hr class="hr">
-      <p class="card-text"><?= $comments[$i]['date']?></p>
+      <p class="card-text mt-2"><?= 'Le '.$comments[$i]['date']?></p>
       <a href="index.php?action=report&id=<?= $_GET['id'] ?>&amp;idComment=<?= $comments[$i]['id']?>&amp;identifiant=<?= $comments[$i]['identifiant']?>&amp;comment=<?= $comments[$i]['commentaire']?>&amp;date=<?= $comments[$i]['date']?>&amp;articleName=<?= $art['titre']?>" class="btn btn-danger">Signaler ce commentaire</a>
     </div>
   </div>
