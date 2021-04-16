@@ -2,8 +2,19 @@
 
 namespace Controllers;
 
-class AdministratorController extends Controller
+class AdministratorController
 {
+    protected $article;
+    protected $admin;
+    protected $report;
+
+    public function __construct()
+    {
+        $this->article = new \Models\ArticleManager();
+        $this->admin = new \Models\AdministratorManager();
+        $this->report = new \Models\ReportCommentManager();
+    }
+
     public function connection(): void
     {
         $adm = $this->admin->adminProfile();

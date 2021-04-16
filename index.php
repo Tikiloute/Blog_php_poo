@@ -16,8 +16,13 @@ if(empty($_GET["action"])){
         break;
 
         case "article" :
-            $commentController->comment();
-            $articleController->article();
+            if(isset($_GET['id']) && $_GET['id'] > 0){
+                var_dump($_GET["id"]);
+                $commentController->comment();
+                $articleController->article();
+            }else{
+                require_once('views\view404.php');
+            }
         break;
 
         case "articles" : 

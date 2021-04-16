@@ -2,14 +2,28 @@
 
 namespace Controllers;
 
-class ArticleController extends Controller
+class ArticleController
 {
+    protected $article;
+    protected $comment;
+
+    public function __construct()
+    {
+        $this->article = new \Models\ArticleManager();
+        $this->comment = new \Models\CommentManager();
+    }
+
     public function article() : void
     {   
-        $art = $this->article->read($_GET['id']);
-        $count = $this->comment->countComment($_GET['id']);
-        $comments = $this->comment->readAll($_GET['id']);
-        require_once('views\viewArticle.php');
+        $id = $_GET['id'];
+        $art = $this->article->read($id);
+        $count = $this->comment->countComment($id);
+        $comments = $this->comment->readAll($id);
+        if($art === null){
+            require_once('views\view404.php');
+        }else{
+            require_once('views\viewArticle.php');
+        }
     }
 
     public function allArticle() : void
@@ -19,11 +33,11 @@ class ArticleController extends Controller
         require_once('views\viewAllArticles.php');
     }
 
-    public function modifyArticle(): void
+    public function modifyArticle() : void
     {
-        $art = $this->article->read($_GET['id']);
+        $id = $_GET['id'];
+        $art = $this->article->read($id);
         require_once('views\viewModifyArticle.php');
     }
-
 
 }

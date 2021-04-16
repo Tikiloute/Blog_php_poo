@@ -1,12 +1,19 @@
 <?php
 namespace Controllers;
 
-class HomeController extends Controller
+class HomeController
 {
+    protected $article;
+
+    public function __construct()
+    {
+        $this->article = new \Models\ArticleManager();
+    }
+
     public function homePage()
     {
-        $count = $this->article->countArticles();
-        $articles = $this->article->readAll();
+        //$articles = $this->article->readAll();
+        $article = $this->article->readNumber();
         require_once('views\viewHome.php');
         require_once('template.php');
     }

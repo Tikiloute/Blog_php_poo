@@ -27,6 +27,8 @@ if($_SESSION['connected'] === true){
             <br>
         <hr class="hr">
             <br>
+            <h3 class="write-article intro">Modération des articles</h3>
+            <br>
 <?php
         for($i = 0; $i < $count[0]; $i++){
 ?>

@@ -12,16 +12,28 @@ class ArticleManager extends Manager
         return $articles; 
     }
 
-    public function read(int $id): array
+    public function readNumber(): array
+    {
+        $stm = $this->db->prepare('SELECT id, titre, SUBSTRING(contenu, 1, 500) AS contenu from article ORDER BY id DESC LIMIT 3');
+        $stm->execute();
+        $articles = $stm->fetchAll();
+        return $articles; 
+    }
+
+    public function read(int $id) //impossible à hint ?
     {
         $stm = $this->db->prepare('SELECT id, titre, contenu from article WHERE id = :id');
         $stm->bindParam(":id", $id);
         $stm->execute();
-        $articles = $stm->fetch();
-        return $articles; 
+        $article = $stm->fetch();
+        if($article === false){
+            $article = null;
+        }else{
+            return $article;
+        } 
     }
 
-    public function countArticles()
+    public function countArticles(): array
     {   
         $stm = $this->db->prepare('SELECT count(*) from article');
         $stm->execute();

@@ -11,15 +11,15 @@ ob_start();
         <br>
     <h3 class="intro">Derniers articles publiés</h3>
     <?php
-    for($i = 0; $i < 3; $i++){
+    foreach($article as $articles){
     ?>
     <div class="card text-center mx-auto mb-3 col-6" >
     <div class="card-body shadow-lg">
-        <h5 class="card-title"><?= $articles[$i]['titre']  ?></h5>
+        <h5 class="card-title"><?= $articles['titre']  ?></h5>
         <hr class="hr">
-        <p class="card-text"><?= $articles[$i]['contenu'].' ...'?></p>
+        <p class="card-text"><?= $articles['contenu'].' ...'?></p>
         <hr class="hr">
-        <a href="article&id=<?= $articles[$i]['id']?>" class="btn btn-primary mt-4">Aller sur l'article</a>
+        <a href="article&id=<?= $articles['id']?>" class="btn btn-primary mt-4">Aller sur l'article</a>
     </div>
     </div>
     <br>

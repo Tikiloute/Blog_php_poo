@@ -2,8 +2,15 @@
 
 namespace Controllers;
 
-class CommentController extends Controller
+class CommentController
 {
+    protected $comment;
+
+    public function __construct()
+    {
+        $this->comment = new \Models\CommentManager();
+    }
+
     public function comment()
     {   
         if (!empty($_POST['pseudo']) && !empty($_POST['content'])){

@@ -4,8 +4,9 @@ if(isset($_GET["addComment"])){
   echo "<div class='alert alert-success text-center'>Votre commentaire a bien été envoyé</div>";
 }
 if(isset($_GET["report"])){
-  echo "<div class='alert alert-success text-center'>Votre signalement a bien été envoyé</div>";
+  echo "<div class='alert alert-warning text-center'>Votre signalement a bien été envoyé</div>";
 }
+//if $art === null alors : article introuvable + vue 404 finir par die()
 ?>
 
   <div class="card text-left mx-auto mb-3 col-6">
@@ -39,13 +40,14 @@ if(isset($_GET["report"])){
   </div>
 
 <?php
-  if($count[0]>0){
+  if(isset($count[0]) && $count[0]>0){ //isset count[0]
 ?>
 
   <h3 class='intro'>Réagissez à cet article: </h3>
 
 <?php 
   }
+
   for($i = 0; $i < $count[0]; $i++){
 ?>
 
