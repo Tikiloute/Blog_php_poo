@@ -13,7 +13,7 @@ ob_start();
     <?php
     foreach($article as $articles){
     ?>
-    <div class="card text-center mx-auto mb-3 col-6" >
+    <div class="card text-center mx-auto mb-3 col-sm-12 col-lg-6 col-xl-6" >
     <div class="card-body shadow-lg">
         <h5 class="card-title"><?= $articles['titre']  ?></h5>
         <hr class="hr">

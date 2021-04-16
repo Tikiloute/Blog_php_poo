@@ -2,7 +2,7 @@
 ob_start();
 for($i = 0; $i < $count[0]; $i++){
 ?>
-<div class="card mx-auto mb-3 col-6">
+<div class="card mx-auto mb-3 col-sm-12 col-lg-6 col-xl-6 col-xl-6">
   <div class="card-body shadow-lg text-center">
     <h5 class="card-title"><?= $articles[$i]['titre'] ?></h5>
     <hr class="hr">

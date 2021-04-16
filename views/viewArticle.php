@@ -9,7 +9,7 @@ if(isset($_GET["report"])){
 //if $art === null alors : article introuvable + vue 404 finir par die()
 ?>
 
-  <div class="card text-left mx-auto mb-3 col-6">
+  <div class="card text-left mx-auto mb-3 col-sm-12 col-lg-6 col-xl-6">
     <div class="card-body shadow-lg">
       <h5 class="card-title"><?= $art['titre']  ?></h5>
       <hr class="hr">
@@ -29,7 +29,7 @@ if(isset($_GET["report"])){
   <br>
   <div>
   <h3 class="write-article intro">Ecrivez votre commentaire ici</h3>
-  <form action="#" method="POST" class="card mx-auto col-6 shadow-lg">
+  <form action="#" method="POST" class="card mx-auto col-sm-12 col-lg-6 col-xl-6 shadow-lg">
       <input type="text" placeholder="Pseudo" name="pseudo" class="card-title"/>
       <textarea id="mytextarea" placeholder="Contenu" name="content"></textarea>
       <input type="submit" class="btn btn-primary" />
@@ -51,7 +51,7 @@ if(isset($_GET["report"])){
   for($i = 0; $i < $count[0]; $i++){
 ?>
 
-  <div class="card mx-auto mb-3 col-6">
+  <div class="card mx-auto mb-3 col-sm-12 col-lg-6 col-xl-6">
     <div class="card-body shadow-lg text-center">
       <h5 class="card-title"><?= $comments[$i]['identifiant'] ?></h5>
       <hr class="hr">

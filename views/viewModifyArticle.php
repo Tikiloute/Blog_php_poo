@@ -8,7 +8,18 @@ ob_start();
         });
     </script>
     <a href='article&id=<?= $_GET['id'] ?>' class="btn btn-light text-primary mb-2">Revenir à l'article</a>
-    <form action="update&id=<?= $_GET['id'] ?>" method="POST" class="card mx-auto col-6" >
+    <?php
+    if(isset($_GET['success']) && $_GET['success'] === 'ok'){
+    ?>
+        <div class='alert alert-success text-center'>Article modifié avec succès !</div>
+    <?php
+    }elseif(isset($_GET['success']) && $_GET['success'] === 'notOk'){
+    ?>
+        <div class='alert alert-danger text-center'>Veuillez modifier l'article !</div>
+    <?php
+    }
+    ?>
+    <form action="update&id=<?= $_GET['id'] ?>" method="POST" class="card mx-auto col-sm-12 col-lg-6 col-xl-6" >
         <input type="hidden" name="idArticle" value="<?= $_GET['id'] ?>">
         <textarea placeholder="titre" name="titreArticle"><?= $art['titre'] ?></textarea>
         <textarea id="ModifyTextArea"  placeholder="contenu" style="height: 50vh" name="contenuArticle"><?= $art['contenu']?></textarea>

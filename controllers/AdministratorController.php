@@ -64,6 +64,8 @@ class AdministratorController
         $adm = $this->admin->adminProfile();
         $reportComment = $this->report->readAll();
         $count = $this->report->count();
+        $readReport =  $this->report->readDifferentReportComment();
+        $countReadReport = count($readReport);
         require_once('views\viewAdminConnected.php');
     }
 
@@ -90,9 +92,16 @@ class AdministratorController
 
     public function updateArticle(): void
     {
-        $this->article->updateArticle($_POST['titreArticle'], $_POST['contenuArticle'], $_GET['id']);
-        header("Location: modify&id=".$_GET['id']);
-        exit();
+        $id= $_GET['id'];
+        $art = $this->article->read($id);
+        if(isset($_POST['titreArticle'], $_POST['contenuArticle'], $id) && ($_POST['titreArticle'] != $art['titre'] || $_POST['contenuArticle'] != $art['contenu'])){
+            $this->article->updateArticle($_POST['titreArticle'], $_POST['contenuArticle'], $id);
+            header("Location: modify&id=".$id."&success=ok");
+            exit();
+        }else{
+            header("Location: modify&id=".$id."&success=notOk");
+            exit();
+        }
     }
 
 }

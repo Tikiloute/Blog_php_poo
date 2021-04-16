@@ -23,7 +23,7 @@ class ReportCommentManager extends Manager
         $stm->execute();
     }
 
-    public function count(): array
+    public function count(): ?array
     {
         $stm = $this->db->prepare('SELECT count(id) from commentaire_moderation');
         $stm->execute();
@@ -43,6 +43,24 @@ class ReportCommentManager extends Manager
         $stm = $this->db->prepare("DELETE FROM commentaire_moderation WHERE id = :id");
         $stm->bindParam(":id", $id);
         $stm->execute();
+    }
+
+
+    public function sum($numberIdComment): ?array
+    {
+        $stm = $this->db->prepare('SELECT count(idCommentaire) from commentaire_moderation where idCommentaire = :id');
+        $stm->bindParam(":id", $numberIdComment);
+        $stm->execute();
+        $count = $stm->fetch();
+        return $count;
+    }
+
+    public function readDifferentReportComment(): array
+    {
+        $stm = $this->db->prepare('SELECT distinct identifiant, commentaire, date, idArticle, nomArticle, id, idCommentaire from commentaire_moderation ');
+        $stm->execute();
+        $comments = $stm->fetchAll();
+        return $comments; 
     }
 
 }

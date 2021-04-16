@@ -17,7 +17,6 @@ if(empty($_GET["action"])){
 
         case "article" :
             if(isset($_GET['id']) && $_GET['id'] > 0){
-                var_dump($_GET["id"]);
                 $commentController->comment();
                 $articleController->article();
             }else{
