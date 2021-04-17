@@ -7,12 +7,14 @@ class AdministratorController
     protected $article;
     protected $admin;
     protected $report;
+    protected $comment;
 
     public function __construct()
     {
         $this->article = new \Models\ArticleManager();
         $this->admin = new \Models\AdministratorManager();
         $this->report = new \Models\ReportCommentManager();
+        $this->comment = new \Models\CommentManager();
     }
 
     public function connection(): void
@@ -53,19 +55,26 @@ class AdministratorController
     }
 
     public function reportComments(): void
-    {
-        $this->report->report($_GET['identifiant'],$_GET['comment'], $_GET['idComment'], $_GET['date'], $_GET['articleName'], $_GET['id'] );
+    { // nombre commentaire signalé < 2 alors on update+1 ---- sinon update nombre commentaire signalé +1
+        $countIdReport = $_GET['NombreIdReport']+1;
+        if($_GET['NombreIdReport'] >= 1){
+        $this->report->updateReportComment($countIdReport, $_GET['idComment']);
+        $this->comment->updateReportComment($countIdReport, $_GET['idComment']);
         header("Location: article&id=".$_GET['id']."&report=ok");
         exit();
+        }else {
+        $this->comment->updateReportComment($countIdReport, $_GET['idComment']);
+        $this->report->report($_GET['identifiant'],$_GET['comment'], $_GET['idComment'], $_GET['date'], $_GET['articleName'], $_GET['id'], $_GET['NombreIdReport']+1);
+        header("Location: article&id=".$_GET['id']."&report=ok");
+        exit();
+        }
     }
 
     public function readReportComment() : void
     {
+        $arrayIdComment = [];
         $adm = $this->admin->adminProfile();
         $reportComment = $this->report->readAll();
-        $count = $this->report->count();
-        $readReport =  $this->report->readDifferentReportComment();
-        $countReadReport = count($readReport);
         require_once('views\viewAdminConnected.php');
     }
 

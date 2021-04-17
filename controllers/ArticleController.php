@@ -6,11 +6,13 @@ class ArticleController
 {
     protected $article;
     protected $comment;
+    protected $report;
 
     public function __construct()
     {
         $this->article = new \Models\ArticleManager();
         $this->comment = new \Models\CommentManager();
+        $this->report = new \Models\ReportCommentManager();
     }
 
     public function article() : void

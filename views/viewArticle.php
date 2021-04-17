@@ -58,7 +58,7 @@ if(isset($_GET["report"])){
       <p class="card-text mt-2"><?= 'A dit : '.$comments[$i]['commentaire']?></p>
       <hr class="hr">
       <p class="card-text mt-2"><?= 'Le '.$comments[$i]['date']?></p>
-      <a href="index.php?action=report&id=<?= $_GET['id'] ?>&amp;idComment=<?= $comments[$i]['id']?>&amp;identifiant=<?= $comments[$i]['identifiant']?>&amp;comment=<?= $comments[$i]['commentaire']?>&amp;date=<?= $comments[$i]['date']?>&amp;articleName=<?= $art['titre']?>" class="btn btn-danger">Signaler ce commentaire</a>
+      <a href="index.php?action=report&id=<?= $_GET['id'] ?>&amp;idComment=<?= $comments[$i]['id']?>&amp;identifiant=<?= $comments[$i]['identifiant']?>&amp;comment=<?= $comments[$i]['commentaire']?>&amp;date=<?= $comments[$i]['date']?>&amp;articleName=<?= $art['titre']?>&amp;NombreIdReport=<?= $comments[$i]['nombre_Id_Report']?>" class="btn btn-danger">Signaler ce commentaire</a>
     </div>
   </div>
 

@@ -5,7 +5,7 @@ class CommentManager extends Manager
 {   
     public function readAll(int $id): array
     {
-        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date, idArticle from commentaire WHERE idArticle = :id');
+        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date, idArticle, nombre_Id_Report from commentaire WHERE idArticle = :id');
         $stm->bindParam(":id", $id);
         $stm->execute();
         $comments = $stm->fetchAll();
@@ -37,6 +37,14 @@ class CommentManager extends Manager
         $stm->bindParam(":comment", $comment);
         $stm->bindParam(":idArticle", $idArticle);
         $stm->execute();        
+    }
+
+    public function updateReportComment(int $countReportComment, int $idCommentaire): void
+    {   
+        $stm = $this->db->prepare("UPDATE commentaire SET nombre_Id_Report = :countReportComment WHERE id = :idCommentaire");
+        $stm->bindParam(":countReportComment", $countReportComment);
+        $stm->bindParam(":idCommentaire", $idCommentaire);
+        $stm->execute();
     }
 
 
