@@ -25,7 +25,7 @@
                             <a class="nav-link text-white" aria-current="true" href="accueil">Accueil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="articles">Articles</a>
+                            <a class="nav-link text-white" href="articles&page=1">Articles</a>
                         </li>
                         <li class="nav-item">
                     <?php if(!empty($_SESSION['connected']) && $_SESSION['connected'] === true){ ?>

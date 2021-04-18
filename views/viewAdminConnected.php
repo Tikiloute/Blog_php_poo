@@ -12,13 +12,20 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
             });
         </script>
         <div >
+            <?php 
+            if (!empty($_POST['titre']) && !empty($_POST['contenu']) && isset($_GET['send'])){
+            ?>
+            <div class='alert alert-success text-center'>Votre article a bien été envoyé</div>
+            <?php 
+            }
+            ?>
             <h2 class="write-article intro">Bonjour <?= $_SESSION['identifiant']?></h2>
             <br>
             <hr class="hr">
             <br>
             <h3 class="write-article intro">Créer votre article ici</h3>
             <br>
-            <form action="#" method="POST" class="card mx-auto col-sm-12 col-lg-6 col-xl-6">
+            <form action="admin&send" method="POST" class="card mx-auto col-sm-12 col-lg-6 col-xl-6">
                 <input type="text" placeholder="Titre" name="titre" class="card-title"/>
                 <textarea id="mytextarea" placeholder="Contenu" name="contenu"></textarea>
                 <input type="submit" class="btn btn-primary" />
@@ -31,11 +38,6 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
             <br>
 <?php
         foreach($reportComment as $reportComments){
-                $isInArray = in_array($reportComments['idCommentaire'],$arrayIdComment);//bool : indique si la valeur appartient au tableau
-                $idComment =  intval($reportComments['idCommentaire']);
-                array_push($arrayIdComment,$idComment);
-                if($isInArray===false){
-
 ?>
             <div class="card mx-auto mb-3 col-sm-12 col-lg-6 col-xl-6">
             <div class="card-body shadow-lg text-center">
@@ -47,12 +49,10 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
                 <hr class="hr">
                 <p class="card-text mt-2">Concernant l'article: <a href="article&id=<?= $reportComments['idArticle']?>" class="text-primary"><?= $reportComments['nomArticle'] ?></a></p>
                 <?php
-                $numberIdComment = array_count_values($arrayIdComment);
-                //print_r($arrayIdComment);
                 if( $reportComments['nombre_Id_Report'] > 1){
                 ?>
                 <hr class="hr">
-                <p class="card-text mt-2 mb-4">Nombre de signalement : <span class="badge bg-danger"><?= $reportComments['nombre_Id_Report']." fois" ?></span></p>
+                <p class="card-text mt-2 mb-4">Nombre de signalements : <span class="badge bg-danger"><?= $reportComments['nombre_Id_Report'] ?></span></p>
                 <?php
                 }
                 ?>
@@ -64,7 +64,6 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
             <hr class="hr">
             <br> 
 <?php 
-            }
         }
 $contenu = ob_get_clean();
 require_once('template.php');

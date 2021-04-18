@@ -59,6 +59,10 @@ if(empty($_GET["action"])){
         case "update" :
             $administratorController->updateArticle();
         break;
+
+        case "deleteComment" :
+            $administratorController->deleteComment();
+        break;
         
 
    }

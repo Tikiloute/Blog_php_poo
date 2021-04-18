@@ -45,7 +45,6 @@ class AdministratorController
     {
         if (!empty($_POST['titre']) && !empty($_POST['contenu'])){
             $this->article->newArticle($_POST['titre'], $_POST['contenu']);
-            echo "<div class='alert alert-success text-center'>Votre article a bien été envoyé</div>";
         }
     }
 
@@ -70,6 +69,7 @@ class AdministratorController
         }
     }
 
+
     public function readReportComment() : void
     {
         $arrayIdComment = [];
@@ -89,6 +89,13 @@ class AdministratorController
     {
         $this->report->deleteReportComment($_GET['id']);
         header("Location: admin");
+        exit();
+    }
+
+    public function deleteComment() : void
+    {
+        $this->report->deleteReportComment($_GET['idComment']);
+        header("Location: article&id=".$_GET['id']);
         exit();
     }
 

@@ -4,6 +4,7 @@ namespace Models;
 abstract class Manager 
 {
     protected $db;
+    protected $numberArticlesPerPage;
 
     public function __construct()
     {

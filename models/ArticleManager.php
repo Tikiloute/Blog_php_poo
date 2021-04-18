@@ -12,6 +12,16 @@ class ArticleManager extends Manager
         return $articles; 
     }
 
+    public function paging($limit,$offset): array
+    {
+        $stm = $this->db->prepare('SELECT id, titre, SUBSTRING(contenu, 1, 500) AS contenu FROM article ORDER BY id DESC LIMIT :limit OFFSET :offset');
+        $stm->bindParam(":offset", $offset,\PDO::PARAM_INT);
+        $stm->bindParam(":limit", $limit,\PDO::PARAM_INT);
+        $stm->execute();
+        $ArticlesPaging = $stm->fetchAll();
+        return $ArticlesPaging; 
+    }
+
     public function readNumber(): array
     {
         $stm = $this->db->prepare('SELECT id, titre, SUBSTRING(contenu, 1, 500) AS contenu from article ORDER BY id DESC LIMIT 3');
@@ -20,7 +30,7 @@ class ArticleManager extends Manager
         return $articles; 
     }
 
-    public function read(int $id) //impossible à hint ?
+    public function read(int $id)// probleme pour hint ... id non existant marque une erreur
     {
         $stm = $this->db->prepare('SELECT id, titre, contenu from article WHERE id = :id');
         $stm->bindParam(":id", $id);
@@ -63,6 +73,13 @@ class ArticleManager extends Manager
         $stm->bindParam(":content", $contenu);
         $stm->bindParam(":id", $id);
         $stm->execute();
+    }
+
+    public function round($numberArticlesPerPage): int
+    {
+        $count = $this->countArticles();
+        $numberArtPerPage = $numberArticlesPerPage;
+        return ceil($count[0]/$numberArtPerPage); 
     }
 
 }

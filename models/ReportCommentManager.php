@@ -55,23 +55,6 @@ class ReportCommentManager extends Manager
         $stm->execute();
     }
 
-
-    public function sum(): ?array
-    {
-        $stm = $this->db->prepare('SELECT *, count(*) over (partition by idCommentaire) from commentaire_moderation ');
-        $stm->execute();
-        $count = $stm->fetch();
-        return $count;
-    }
-
-    public function readDifferentReportComment(): array
-    {
-        $stm = $this->db->prepare('SELECT distinct identifiant, commentaire, date, idArticle, nomArticle, idCommentaire from commentaire_moderation');
-        $stm->execute();
-        $comments = $stm->fetchAll();
-        return $comments; 
-    }
-
     public function updateReportComment(int $countReportComment, int $idCommentaire): void
     {   
         $stm = $this->db->prepare("UPDATE commentaire_moderation SET nombre_Id_Report = :countReportComment WHERE idCommentaire = :idCommentaire");
