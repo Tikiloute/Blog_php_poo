@@ -40,7 +40,7 @@ if(isset($_GET["report"])){
   </div>
 
 <?php
-  if(isset($count[0]) && $count[0]>0){ //isset count[0]
+  if(isset($count[0]) && $count[0]>0 && $_GET['pagingComment']<$round && $_GET['pagingComment']>0){ //isset count[0]
 ?>
 
   <h3 class='intro'>Réagissez à cet article: </h3>
@@ -49,6 +49,7 @@ if(isset($_GET["report"])){
   }
 
   for($i = 0; $i < $count[0]; $i++){
+    if(isset($comments[$i]['identifiant'],$comments[$i]['commentaire'], $comments[$i]['date'])){
 ?>
 
   <div class="card mx-auto mb-3 col-sm-12 col-lg-6 col-xl-6">
@@ -58,19 +59,20 @@ if(isset($_GET["report"])){
       <p class="card-text mt-2"><?= 'A dit : '.$comments[$i]['commentaire']?></p>
       <hr class="hr">
       <p class="card-text mt-2"><?= 'Le '.$comments[$i]['date']?></p>
-      <a href="index.php?action=report&id=<?= $_GET['id'] ?>&amp;idComment=<?= $comments[$i]['id']?>&amp;identifiant=<?= $comments[$i]['identifiant']?>&amp;comment=<?= $comments[$i]['commentaire']?>&amp;date=<?= $comments[$i]['date']?>&amp;articleName=<?= $art['titre']?>&amp;NombreIdReport=<?= $comments[$i]['nombre_Id_Report']?>" class="btn btn-warning">Signaler ce commentaire</a>
-      <?php
-      if(isset($_SESSION['connected']) &&  $_SESSION['connected']= true){
-      ?>
+      <a href="index.php?action=report&amp;id=<?= $_GET['id'] ?>&amp;idComment=<?= $comments[$i]['id']?>&amp;pagingComment=<?= $_GET['pagingComment']?>&amp;identifiant=<?= $comments[$i]['identifiant']?>&amp;comment=<?= $comments[$i]['commentaire']?>&amp;date=<?= $comments[$i]['date']?>&amp;articleName=<?= $art['titre']?>&amp;NombreIdReport=<?= $comments[$i]['nombre_Id_Report']?>" class="btn btn-warning">Signaler ce commentaire</a>
+<?php
+  if(isset($_SESSION['connected']) && $_SESSION['connected']= true){
+?>
 
       <!------------------------------------------------ bouton de la modal------------------------------------------------>
 
       <button type="button" class="btn btn-danger" id='myInput' data-bs-toggle="modal" data-bs-target="#myModalComment">Supprimer le commentaire</button>
-      <?php
-      }
-      ?>
+<?php
+  }
+    }
+?>
     </div>
-  </div>
+    </div>
 
       <!-------------------------------------------------- modal----------------------------------------------------------->
 
@@ -89,13 +91,53 @@ if(isset($_GET["report"])){
 
       <!------------------------------------------ bouton suppression du commentaire --------------------------------------->
 
-          <a href="deleteComment&id=<?= $_GET['id']?>&idComment=<?= $comments[$i]['id']?>" class="btn btn-danger">Supprimer le commentaire</a>
+          <a href="deleteComment&id=<?= $_GET['id']?>&idComment=<?= $comments[$i]['id']?>&pagingComment=<?= $_GET['pagingComment']?>" class="btn btn-danger">Supprimer le commentaire</a>
       </div>
       </div>
   </div>
   </div>
+  
+<?php
+  } // fin boucle for-----------------------------
+?>
 
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item">
+      <?php
+    if($_GET['pagingComment'] > 1 && $_GET['pagingComment']<= $round){
+?>
+        <a class="page-link" href="article&id=<?= $_GET['id']?>&pagingComment=<?=$_GET['pagingComment']-1?>" tabindex="-1"><b>Précédent</b></a>
 <?php
   }
+?>
+      </li>
+<?php 
+  for($i=1; $i <=$round; $i++){
+    if($_GET['pagingComment'] != $i && $round >1){
+?>
+      <li class="page-item"><a class="page-link" href="article&id=<?=$_GET['id']?>&pagingComment=<?=$i?>"><b><?= $i?></b></a></li>
+<?php
+  }else{
+?>
+          <li class="page-item d-none d-xl-block d-lg-block disabled"><a class="page-link" href="article&id=<?=$_GET['id']?>&pagingComment=<?=$i?>"><b><?= $i ?></b></a></li>
+<?php  
+  }
+}
+      ?>
+      <li class="page-item">
+<?php
+  if($_GET['pagingComment'] < $round){
+?>
+        <a class="page-link" href="article&id=<?= $_GET['id']?>&pagingComment=<?=$_GET['pagingComment']+1?>" tabindex="-1"><b>suivant</b></a>
+<?php
+  }else{
+    $_GET['pagingComment'] = $round;
+  }
+?>
+      </li>
+    </ul>
+    </nav>
+<?php
   $contenu = ob_get_clean();
   require('template.php');

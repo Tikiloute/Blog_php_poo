@@ -18,9 +18,24 @@ class ArticleController
     public function article() : void
     {   
         $id = $_GET['id'];
+        $numberCommentsPerPage=4;
+        //$offset =($_GET['pagingComment']-1)*$numberCommentsPerPage;
+        $round = $this->comment->round($id,$numberCommentsPerPage);
+        if($_GET['pagingComment'] > $round){
+            $_GET['pagingComment'] = $round;
+            $offset =($_GET['pagingComment']-1)*$numberCommentsPerPage;
+        }elseif($_GET['pagingComment'] < 1){
+            $_GET['pagingComment'] = 1;
+            $offset =($_GET['pagingComment']-1)*$numberCommentsPerPage;
+        }else{
+            $offset =($_GET['pagingComment']-1)*$numberCommentsPerPage;
+        }
         $art = $this->article->read($id);
         $count = $this->comment->countComment($id);
-        $comments = $this->comment->readAll($id);
+        //$comments = $this->comment->readAll($id);
+        if(isset($_GET['pagingComment'])){
+            $comments = $this->comment->readAllPaging($id, $numberCommentsPerPage, $offset);
+        }
         if($art === null){
             require_once('views\view404.php');
         }else{
@@ -42,7 +57,6 @@ class ArticleController
             $_GET['page']=$round;
         }
         $count = $this->article->countArticles();
-        //$articles = $this->article->readAll();
         if($_GET['page'] <1){
             $_GET['page']=1;
         }

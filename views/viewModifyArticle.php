@@ -7,7 +7,7 @@ ob_start();
             selector: '#ModifyTextArea'
         });
     </script>
-    <a href='article&id=<?= $_GET['id'] ?>' class="btn btn-light text-primary mb-2">Revenir à l'article</a>
+    <a href='article&id=<?= $_GET['id'] ?>&pagingComment=1' class="btn btn-light text-primary mb-2">Revenir à l'article</a>
     <?php
     if(isset($_GET['success']) && $_GET['success'] === 'ok'){
     ?>

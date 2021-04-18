@@ -12,6 +12,17 @@ class CommentManager extends Manager
         return $comments; 
     }
 
+    public function readAllPaging(int $id, int $limit, int $offset): array
+    {
+        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date, idArticle, nombre_Id_Report from commentaire WHERE idArticle = :id LIMIT :limit OFFSET :offset');
+        $stm->bindParam(":offset", $offset,\PDO::PARAM_INT);
+        $stm->bindParam(":limit", $limit,\PDO::PARAM_INT);
+        $stm->bindParam(":id", $id);
+        $stm->execute();
+        $comments = $stm->fetchAll();
+        return $comments; 
+    }
+
     public function read():array
     {
         $stm = $this->db->prepare('SELECT * from commentaire INNER JOIN WHERE idArticle = :id');
@@ -45,6 +56,14 @@ class CommentManager extends Manager
         $stm->bindParam(":countReportComment", $countReportComment);
         $stm->bindParam(":idCommentaire", $idCommentaire);
         $stm->execute();
+    }
+
+
+    public function round($id,$numberArticlesPerPage): int
+    {
+        $count = $this->countComment($id);
+        $numberArtPerPage = $numberArticlesPerPage;
+        return ceil($count[0]/$numberArtPerPage); 
     }
 
 

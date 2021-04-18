@@ -19,7 +19,7 @@ ob_start();
         <hr class="hr">
         <p class="card-text"><?= $articles['contenu'].' ...'?></p>
         <hr class="hr">
-        <a href="article&id=<?= $articles['id']?>" class="btn btn-primary mt-4">Aller sur l'article</a>
+        <a href="article&id=<?= $articles['id']?>&pagingComment=1" class="btn btn-primary mt-4">Aller sur l'article</a>
     </div>
     </div>
     <br>

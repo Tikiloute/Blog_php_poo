@@ -59,12 +59,12 @@ class AdministratorController
         if($_GET['NombreIdReport'] >= 1){
         $this->report->updateReportComment($countIdReport, $_GET['idComment']);
         $this->comment->updateReportComment($countIdReport, $_GET['idComment']);
-        header("Location: article&id=".$_GET['id']."&report=ok");
+        header("Location: article&id=".$_GET['id']."&pagingComment=".$_GET['pagingComment']."&report=ok");
         exit();
         }else {
         $this->comment->updateReportComment($countIdReport, $_GET['idComment']);
         $this->report->report($_GET['identifiant'],$_GET['comment'], $_GET['idComment'], $_GET['date'], $_GET['articleName'], $_GET['id'], $_GET['NombreIdReport']+1);
-        header("Location: article&id=".$_GET['id']."&report=ok");
+        header("Location: article&id=".$_GET['id']."&pagingComment=".$_GET['pagingComment']."&report=ok");
         exit();
         }
     }
@@ -95,7 +95,7 @@ class AdministratorController
     public function deleteComment() : void
     {
         $this->report->deleteReportComment($_GET['idComment']);
-        header("Location: article&id=".$_GET['id']);
+        header("Location: article&id=".$_GET['id']."&pagingComment=".$_GET['pagingComment']);
         exit();
     }
 
