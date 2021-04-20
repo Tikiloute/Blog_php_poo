@@ -72,16 +72,18 @@ class AdministratorController
 
     public function readReportComment() : void
     {
+        $article = $this->article->readAll();
         $arrayIdComment = [];
         $adm = $this->admin->adminProfile();
         $reportComment = $this->report->readAll();
+        $count =  $this->report->count();
         require_once('views\viewAdminConnected.php');
     }
 
     public function deleteArticle() : void
     {
         $this->article->deleteArticle($_GET['id']);
-        header("Location: articles");
+        header("Location: articles&page=1");
         exit();
     }
 
@@ -102,6 +104,7 @@ class AdministratorController
     public function validateReportComment() : void
     {
         $this->report->validateReportComment($_GET['id']);
+        $this->comment->updateReportComment(0, $_GET['id']);
         header("Location: admin");
         exit();
     }

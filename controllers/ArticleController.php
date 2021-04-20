@@ -17,27 +17,26 @@ class ArticleController
 
     public function article() : void
     {   
+        if(!isset($_GET['pagingComment'])){
+            $_GET['pagingComment']=1;
+        };
         $id = $_GET['id'];
         $numberCommentsPerPage=4;
-        //$offset =($_GET['pagingComment']-1)*$numberCommentsPerPage;
+        $offset =($_GET['pagingComment']-1)*$numberCommentsPerPage;
         $round = $this->comment->round($id,$numberCommentsPerPage);
-        if($_GET['pagingComment'] > $round){
-            $_GET['pagingComment'] = $round;
-            $offset =($_GET['pagingComment']-1)*$numberCommentsPerPage;
-        }elseif($_GET['pagingComment'] < 1){
-            $_GET['pagingComment'] = 1;
-            $offset =($_GET['pagingComment']-1)*$numberCommentsPerPage;
-        }else{
-            $offset =($_GET['pagingComment']-1)*$numberCommentsPerPage;
-        }
+        if(isset($_GET['pagingComment']) && $_GET['pagingComment'] < 1){
+            $offset = 0;
+        };
         $art = $this->article->read($id);
         $count = $this->comment->countComment($id);
-        //$comments = $this->comment->readAll($id);
         if(isset($_GET['pagingComment'])){
-            $comments = $this->comment->readAllPaging($id, $numberCommentsPerPage, $offset);
-        }
-        if($art === null){
+           $comments = $this->comment->readAllPaging($id, $numberCommentsPerPage, $offset);
+        }else{
             require_once('views\view404.php');
+        }
+        if($art === null ){
+            require_once('views\view404.php');
+            die();
         }else{
             require_once('views\viewArticle.php');
         }

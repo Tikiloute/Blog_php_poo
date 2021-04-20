@@ -21,6 +21,7 @@ if(empty($_GET["action"])){
                 $articleController->article();
             }else{
                 require_once('views\view404.php');
+                die();
             }
         break;
 

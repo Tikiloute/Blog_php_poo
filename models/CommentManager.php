@@ -14,9 +14,9 @@ class CommentManager extends Manager
 
     public function readAllPaging(int $id, int $limit, int $offset): array
     {
-        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date, idArticle, nombre_Id_Report from commentaire WHERE idArticle = :id LIMIT :limit OFFSET :offset');
+        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, DATE_FORMAT(date, "%d/%m/%Y %Hh%imin%ss") AS date, idArticle, nombre_Id_Report from commentaire WHERE idArticle = :id LIMIT :limite OFFSET :offset');
         $stm->bindParam(":offset", $offset,\PDO::PARAM_INT);
-        $stm->bindParam(":limit", $limit,\PDO::PARAM_INT);
+        $stm->bindParam(":limite", $limit,\PDO::PARAM_INT);
         $stm->bindParam(":id", $id);
         $stm->execute();
         $comments = $stm->fetchAll();

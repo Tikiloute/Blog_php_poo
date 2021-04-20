@@ -6,7 +6,7 @@ class ArticleManager extends Manager
 
     public function readAll(): array
     {
-        $stm = $this->db->prepare('SELECT id, titre, SUBSTRING(contenu, 1, 500) AS contenu from article ORDER BY id DESC');
+        $stm = $this->db->prepare('SELECT id, titre, SUBSTRING(contenu, 1, 500) AS contenu from article');
         $stm->execute();
         $articles = $stm->fetchAll();
         return $articles; 

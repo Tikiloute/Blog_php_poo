@@ -9,7 +9,7 @@ for($i = 0; $i < $count[0]; $i++){
     <hr class="hr">
     <p class="card-text"><?= $articles[$i]['contenu'].'...'?></p>
     <hr class="hr">
-    <a href="article&id=<?= $articles[$i]['id']?>&pagingComment=1" class="btn btn-primary mt-4">Aller sur l'article</a>
+    <a href="article&id=<?= $articles[$i]['id']?>&pagingComment=1" class="btn btn-primary mt-4 btnBleu">Aller sur l'article</a>
   </div>
 </div>
 <br>
