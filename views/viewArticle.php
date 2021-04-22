@@ -28,10 +28,11 @@ if(isset($_GET["report"])){
   <br>
   <div>
   <h3 class="write-article intro">Ecrivez votre commentaire ici</h3>
-  <form action="#" method="POST" class="card mx-auto col-sm-12 col-lg-6 col-xl-6 shadow-lg">
-      <input type="text" placeholder="Pseudo" name="pseudo" class="card-title"/>
-      <textarea id="mytextarea" placeholder="Contenu" name="content"></textarea>
-      <input type="submit" class="btn btn-primary btnBleu" />
+  <br>
+  <form action="#" method="POST" class="card mx-auto col-sm-12 col-lg-6 col-xl-6 shadow-lg formBg">
+      <input type="text" placeholder="Pseudo" name="pseudo" class="card-title formBox"/>
+      <textarea id="mytextarea" placeholder="Votre commentaire" class="formBox" name="content"></textarea>
+      <input type="submit" class="btn btn-primary btnBleu mt-3" />
   </form>
   <br>
   <hr class="hr">
@@ -70,7 +71,7 @@ if(isset($_GET["report"])){
     }// End if-----------------------------
   } // fin boucle for-----------------------------
 ?>
-  <nav aria-label="Page navigation example">
+  <nav aria-label="Page navigation">
     <ul class="pagination justify-content-center">
       <li class="page-item">
       <?php

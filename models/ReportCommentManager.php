@@ -3,9 +3,11 @@ namespace Models;
 
 class ReportCommentManager extends Manager
 {
-    public function readAll(): array
+    public function readAll($limit, $offset): array
     {
-        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, date, nomArticle, idCommentaire, idArticle, nombre_Id_Report from commentaire_moderation');
+        $stm = $this->db->prepare('SELECT id, identifiant, commentaire, date, nomArticle, idCommentaire, idArticle, nombre_Id_Report from commentaire_moderation LIMIT :limit OFFSET :offset');
+        $stm->bindParam(":offset", $offset,\PDO::PARAM_INT);
+        $stm->bindParam(":limit", $limit,\PDO::PARAM_INT);
         $stm->execute();
         $comments = $stm->fetchAll();
         return $comments; 
@@ -61,6 +63,13 @@ class ReportCommentManager extends Manager
         $stm->bindParam(":countReportComment", $countReportComment);
         $stm->bindParam(":idCommentaire", $idCommentaire);
         $stm->execute();
+    }
+
+    public function round($numberCommentsPerPage): int
+    {
+        $count = $this->count();
+        $numberCommentPerPage = $numberCommentsPerPage;
+        return ceil($count[0]/$numberCommentPerPage); 
     }
 
 }

@@ -83,95 +83,107 @@ h1{
 .card-body{
     background-image: url("images\\parchemin.jpg") !important;
     box-shadow: 7px 10px 4px rgb(109, 108, 108) !important;
+    transition:0.4s;
+}
+
+.card-body:hover{
+    box-shadow: none !important;
+}
+
+.btn{
+    margin-bottom: 1em;
 }
 
 .btnBleu{
-  background: linear-gradient(180deg, #0d6efd 50%, #0d51b8 50%);
+  background: linear-gradient(180deg, #0d51b8 30%, #0d6efd 70%);
   border-radius: 10px;
-  box-shadow: 4px 4px 4px #0d51b8;
-  border-bottom:1px solid #0d6efd;
-  border-top:1px solid #000000;
+  border-bottom:4px solid #0a316b;
   text-shadow: rgb(0, 0, 0) 2px 2px;
+  box-shadow: 4px 4px 6px #093a83;
+  transition: 0.4s;
 }
 
 .btnBleu:hover{
-  background: linear-gradient(180deg, #0d51b8 50%, #0d6efd 50%);
+  background: linear-gradient(180deg, #0d51b8 30%, #0d6efd 70%);
   border-radius: 10px;
-  box-shadow: 4px 4px 4px #0d6efd;
-  border-bottom:1px solid #000000;
+  border-bottom:4px solid #0a316b;
   text-shadow: rgb(0, 0, 0) 2px 2px;
+  box-shadow:none;
+}
+
+.badge{
+    box-shadow: 4px 4px 6px #a33049;
+    border-bottom:4px solid #c00931;
+    text-shadow: rgb(0, 0, 0) 2px 2px;
 }
 
 .btnRouge{
-    background: linear-gradient(180deg, #f50b3d 50%, #fa476e 50%);
+    background: linear-gradient(180deg, #fa476e 30%, #f50b3d 70%);
     border-radius: 10px;
-    box-shadow: 4px 4px 4px #fa476e;
-    border-bottom:1px solid #f50b3d;
-    border-top:1px solid #000000;
+    box-shadow: 4px 4px 6px #a33049;
+    border-bottom:4px solid #c00931;
     text-shadow: rgb(0, 0, 0) 2px 2px;
+    transition: 0.4s;
   }
   
 .btnRouge:hover{
-    background: linear-gradient(180deg, #fa476e 50%, #f50b3d 50%);
+    background: linear-gradient(180deg, #fa476e 30%, #f50b3d 70%);
     border-radius: 10px;
-    box-shadow: 4px 4px 4px #f50b3d;
-    border-bottom:1px solid #000000;
+    box-shadow: none;
+    border-bottom:4px solid #c00931;
     text-shadow: rgb(0, 0, 0) 2px 2px;
 }
 
 .btnJaune{
-    background: linear-gradient(180deg, #fdaa0f 50%, #e98310 50%);
+    background: linear-gradient(180deg, #e98310 30%, #fdaa0f 70%);
     border-radius: 10px;
-    box-shadow: 4px 4px 4px #e98310;
-    border-top:1px solid #000000;
-    text-shadow: rgb(252, 62, 4) 2px 2px;
+    box-shadow: 4px 4px 6px #99570b;
+    border-bottom:4px solid #db7d10;
+    text-shadow: rgb(218, 54, 4) 2px 2px;
+    transition: 0.4s;
 }
   
 .btnJaune:hover{
-    background: linear-gradient(180deg, #e98310 50%, #fdaa0f 50%);
+    background: linear-gradient(180deg, #e98310 30%, #fdaa0f 70%);
     border-radius: 10px;
-    box-shadow: 4px 4px 4px #fd460f;
-    border-bottom:1px solid #000000;
+    box-shadow: none;
+    border-bottom:4px solid #db7d10;;
     text-shadow: rgb(252, 62, 4) 2px 2px;
 }
 
 .btnVert{
-    background: linear-gradient(180deg, #54d38d 50%, #45ad74 50%);
+    background: linear-gradient(180deg, #54d38d 30%, #45ad74 70%);
     border-radius: 10px;
-    box-shadow: 4px 4px 4px #45ad74;
-    border-bottom:1px solid #54d38d;
-    border-right:2px solid #54d38d;
-    border-top:1px solid #000000;
+    box-shadow: 4px 4px 6px #1d4730 !important;
+    border-bottom:4px solid #1d4730;
     text-shadow: rgb(0, 0, 0) 2px 2px;
+    transition: 0.4s;
 }
   
 .btnVert:hover{
-    background: linear-gradient(180deg, #45ad74 50%, #54d38d 50%);
+    background: linear-gradient(180deg, #54d38d 30%, #45ad74 70%);
     border-radius: 10px;
-    box-shadow: 4px 4px 4px #54d38d;
-    border-top:1px solid #54d38d;
-    border-bottom:1px solid #000000;
+    box-shadow: none !important;
+    border-bottom:4px solid #1d4730;
     text-shadow: rgb(0, 0, 0) 2px 2px;
 }
 
 .btnBlanc{
-    background: linear-gradient(180deg, #fbfbfb 50%, #d8d8d8 50%);
+    background: linear-gradient(180deg, #d8d8d8 30%, #fbfbfb 70%);
     border-radius: 10px;
-    box-shadow: 4px 4px 4px #d8d8d8;
-    border-bottom:1px solid #858484;
+    box-shadow: 4px 4px 6px #7a7a7a;
+    border-bottom:4px solid #747373;
     border-right:2px solid #858484;
-    border-top:1px solid #000000;
     text-shadow: rgb(187, 187, 187) 2px 2px;
 }
   
 .btnBlanc:hover{
-    background: linear-gradient(180deg, #d8d8d8 50%, #fbfbfb 50%);
+    background: linear-gradient(180deg, #d8d8d8 30%, #fbfbfb 70%);
     border-radius: 10px;
-    box-shadow: 4px 4px 4px #cecdcd;
-    border-top:1px solid #858484;
-    border-left: 1px solid #858484;
-    border-bottom:1px solid #000000;
-    text-shadow: rgb(144, 144, 144) 2px 2px;
+    box-shadow: none;
+    border-bottom:4px solid #747373;
+    border-right:2px solid #858484;
+    text-shadow: rgb(187, 187, 187) 2px 2px;
 }
 
 .intro{
@@ -218,6 +230,43 @@ ul a:hover {
     text-decoration: underline;
 }
 
+.formBg{
+    background-color: transparent;
+    border:none;
+}
+
+.formBox{
+    border-radius: 10px;
+}
+
+.linkArticle{
+    text-decoration: none;
+}
+
+.linkArticle:hover{
+    text-decoration: underline;
+    text-shadow: rgb(63, 62, 62) 0.5px 0.5px !important;
+}
+
+
+
+/* ici je centre horizontalement tous les placeholders dans les navigateurs qui le permettent*/
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }
+/*------------------------------------------------------------------------------------------------*/
 
 /* 
 ---------------------------------------Media queries ecran < 800------------------------------

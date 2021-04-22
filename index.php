@@ -16,7 +16,7 @@ if(empty($_GET["action"])){
         break;
 
         case "article" :
-            if(isset($_GET['id']) && $_GET['id'] > 0){
+            if(isset($_GET['id']) && isset($_GET['pagingComment']) && $_GET['id'] > 0){
                 $commentController->comment();
                 $articleController->article();
             }else{
@@ -26,7 +26,12 @@ if(empty($_GET["action"])){
         break;
 
         case "articles" : 
+            if(isset($_GET['action']) && $_GET['action']==="articles" && isset($_GET['page'])){
             $articleController->allArticle();
+            }else{
+                require_once('views\view404.php');
+                die();
+            }
         break;
 
         case "admin" : 
@@ -65,7 +70,6 @@ if(empty($_GET["action"])){
             $administratorController->deleteComment();
         break;
         
-
    }
 }
 

@@ -45,6 +45,8 @@ class AdministratorController
     {
         if (!empty($_POST['titre']) && !empty($_POST['contenu'])){
             $this->article->newArticle($_POST['titre'], $_POST['contenu']);
+            header("Location: admin&page=1");
+            exit();
         }
     }
 
@@ -72,10 +74,25 @@ class AdministratorController
 
     public function readReportComment() : void
     {
+        $limit = 5;
+        $round = $this->report->round($limit);
+        if(isset($_GET['page']) && $_GET['page'] > $round){
+            $_GET['page'] = $round;
+        }
+        if(isset($_GET['page']) && $_GET['page'] < 1){
+            $_GET['page'] = 1;
+        }
+        if(!isset($_GET['page'])){
+            $_GET['page']=1;
+        }
+        if(isset($_GET['page']) && $_GET['page'] > 1){
+            $offset = ($_GET['page']-1)*$limit;
+        } else {
+            $offset = 0;
+        }
         $article = $this->article->readAll();
-        $arrayIdComment = [];
         $adm = $this->admin->adminProfile();
-        $reportComment = $this->report->readAll();
+        $reportComment = $this->report->readAll($limit, $offset);
         $count =  $this->report->count();
         require_once('views\viewAdminConnected.php');
     }
@@ -90,7 +107,7 @@ class AdministratorController
     public function deleteReportComment() : void
     {
         $this->report->deleteReportComment($_GET['id']);
-        header("Location: admin");
+        header("Location: admin&page=1");
         exit();
     }
 
@@ -105,7 +122,7 @@ class AdministratorController
     {
         $this->report->validateReportComment($_GET['id']);
         $this->comment->updateReportComment(0, $_GET['id']);
-        header("Location: admin");
+        header("Location: admin&page=1");
         exit();
     }
 

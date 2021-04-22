@@ -14,7 +14,7 @@ if(!empty($_POST['identifiant']) || !empty($_POST['password'])){
 ?>
 <h3>Espace connexion</h3>
 <hr class="hr">
-<form action="admin&connected=ok" method="POST">
+<form action="admin&page=1&connected=ok" method="POST">
     <div class="col-12 mt-5">
         <div class="mb-3 col-sm-12 col-lg-6 col-xl-6  mx-auto">
             <label for="InputId"  class="form-label">Identifiant</label>
@@ -25,7 +25,7 @@ if(!empty($_POST['identifiant']) || !empty($_POST['password'])){
             <input type="password" name ="password" class="form-control" id="InputPassword" required>
         </div>
         <div class="d-flex justify-content-center mt-4">
-        <input type="submit" class="btn btn-primary"/>
+        <input type="submit" class="btn btn-primary btnBleu"/>
         </div>
     </div>
 </form>

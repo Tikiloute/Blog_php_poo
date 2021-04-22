@@ -25,10 +25,10 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
             <h3 class="write-article intro">Créer votre article ici</h3>
             <hr class="hr">
             <br>
-            <form action="admin&send" method="POST" class="card mx-auto col-sm-12 col-lg-8 col-xl-8">
+            <form action="admin&send" method="POST" class="card mx-auto col-sm-12 col-lg-8 col-xl-8 formBg">
                 <input type="text" placeholder="Titre" name="titre" class="card-title"/>
-                <textarea id="textarea" placeholder="Contenu" name="contenu"></textarea>
-                <input type="submit" class="btn btn-primary btnBleu" />
+                <textarea id="textarea" class="" placeholder="Contenu" name="contenu"></textarea>
+                <input type="submit" class="btn btn-primary btnBleu mt-3" />
             </form>
         </div>
             <br>
@@ -41,7 +41,7 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
             <?php 
                 foreach($article as $articles){
             ?>
-                <option value="modify&id=<?= $articles['id']?>" class="mx-auto w-auto"><?=$articles['titre'] ?></option>
+                <option value="modify&id=<?= $articles['id']?>" class="optionStyle mx-auto w-auto"><?=$articles['titre'] ?></option>
             <?php
             } 
             ?>
@@ -58,9 +58,9 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
             <?php
             }
             ?>
-<?php
+        <?php
         foreach($reportComment as $reportComments){
-?>
+        ?>
             <div class="card mx-auto mb-3 col-sm-12 col-lg-6 col-xl-6">
             <div class="card-body shadow-lg text-center">
                 <h5 class="card-title"><?= $reportComments['identifiant'] ?></h5>
@@ -69,7 +69,7 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
                 <hr class="hr">
                 <p class="card-text mt-2"><?= "Le ".$reportComments['date']?></p>
                 <hr class="hr">
-                <p class="card-text mt-2">Concernant l'article: <a href="article&amp;id=<?= $reportComments['idArticle']?>&amp;pagingComment=1" class="text-primary"><?= $reportComments['nomArticle'] ?></a></p>
+                <p class="card-text mt-2">Concernant l'article: <a href="article&amp;id=<?= $reportComments['idArticle']?>&amp;pagingComment=1" class="text-primary linkArticle"><?= $reportComments['nomArticle'] ?></a></p>
                 <?php
                 if( $reportComments['nombre_Id_Report'] > 1){
                 ?>
@@ -85,7 +85,47 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
             <br>
             <hr class="hr">
             <br> 
-<?php 
+        <?php 
         }
+        ?>
+            <!-- pagination -->
+            <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+            <?php    
+            if(isset($_GET['page']) && $_GET['page'] >1){
+            ?>
+                <li class="page-item"><a class="page-link" href="admin&page=<?=$_GET['page']-1 ?>">Précédent</a></li>
+            <?php
+            }else{
+            ?>
+                <li class="page-item disabled"><a class="page-link" href="admin&page=<?=$_GET['page']-1 ?>">Précédent</a></li>
+            <?php
+            }
+            ?>
+                <?php
+                for($i=1; $i <= $round; $i++){
+                    if(isset($_GET['page']) && $_GET['page'] != $i){
+                ?>
+                    <li class="page-item d-none d-sm-block d-xl-block d-lg-block"><a class="page-link" href="admin&page=<?= $i ?>"><?= $i ?></a></li>
+                <?php
+                    }else{
+                ?>
+                    <li class="page-item d-none d-sm-block d-xl-block d-lg-block disabled"><a class="page-link" href="admin&page=<?= $i ?>"><?= $i ?></a></li>
+                <?php        
+                    }
+                }
+                if(isset($_GET['page']) && $_GET['page'] < $round){
+                ?>
+                    <li class="page-item"><a class="page-link" href="admin&page=<?=$_GET['page']+1 ?>">Suivant</a></li>
+                <?php
+                }else{
+                ?>
+                    <li class="page-item disabled"><a class="page-link" href="admin&page=<?=$_GET['page']+1 ?>">Suivant</a></li>
+                <?php
+                }
+                ?>
+            </ul>
+            </nav>
+<?php
 $contenu = ob_get_clean();
 require_once('template.php');

@@ -30,19 +30,19 @@ for($i = 0; $i < $count[0]; $i++){
       }
     ?>
     </li>
-<?php 
+      <?php 
       for($i = 1; $i <= $round ; $i++){
         if($_GET['page'] != $i){
-?>
+      ?>
     <li class="page-item d-none d-xl-block d-lg-block"><a class="page-link" href="articles&page=<?=$i?>"><b><?= $i ?></b></a></li>
-<?php
+        <?php
         }else{
-?>
+        ?>
     <li class="page-item d-none d-xl-block d-lg-block disabled"><a class="page-link" href="articles&page=<?=$i?>"><b><?= $i ?></b></a></li>
-<?php
+      <?php
         }
       }
-?>    
+    ?>    
     <li class="page-item">
     <?php
     if($_GET['page'] < $round){

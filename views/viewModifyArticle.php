@@ -19,11 +19,11 @@ ob_start();
     <?php
     }
     ?>
-    <form action="update&id=<?= $_GET['id'] ?>" method="POST" class="card mx-auto col-sm-12 col-lg-6 col-xl-6" >
+    <form action="update&id=<?= $_GET['id'] ?>" method="POST" class="card mx-auto col-sm-12 col-lg-6 col-xl-6 formBg" >
         <input type="hidden" name="idArticle" value="<?= $_GET['id'] ?>">
-        <textarea placeholder="titre" name="titreArticle"><?= $art['titre'] ?></textarea>
-        <textarea id="ModifyTextArea"  placeholder="contenu" style="height: 50vh" name="contenuArticle"><?= $art['contenu']?></textarea>
-        <input type="submit" value="Modifier l'article" class="btn btn-primary btnBleu"/>
+        <textarea placeholder="titre" class="mb-3" name="titreArticle"><?= $art['titre'] ?></textarea>
+        <textarea id="ModifyTextArea" class="text-danger" placeholder="contenu" style="height: 50vh" name="contenuArticle"><?= $art['contenu']?></textarea>
+        <input type="submit" value="Modifier l'article" class="btn btn-primary btnBleu mt-3"/>
     </form>
 
                         <!-- bouton de la modal -->

@@ -38,7 +38,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="admin">Gérer votre site</a>
+                            <a class="nav-link text-white" href="admin&page=1">Gérer votre site</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link disconnect ml-5" href="logout">Se déconnecter</a>
