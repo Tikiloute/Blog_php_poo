@@ -4,6 +4,8 @@ namespace Models;
 class ArticleManager extends Manager
 {
 
+    public const LIMIT_HOMEPAGE = 3;
+
     public function readAll(): array
     {
         $stm = $this->db->prepare('SELECT id, titre, SUBSTRING(contenu, 1, 500) AS contenu from article');
@@ -24,13 +26,13 @@ class ArticleManager extends Manager
 
     public function readNumber(): array
     {
-        $stm = $this->db->prepare('SELECT id, titre, SUBSTRING(contenu, 1, 500) AS contenu from article ORDER BY id DESC LIMIT 3');
+        $stm = $this->db->prepare('SELECT id, titre, SUBSTRING(contenu, 1, 500) AS contenu from article ORDER BY id DESC LIMIT ' .self::LIMIT_HOMEPAGE);
         $stm->execute();
         $articles = $stm->fetchAll();
         return $articles; 
     }
 
-    public function read(int $id)// probleme pour hint ... id non existant marque une erreur
+    public function read(int $id): ?array
     {
         $stm = $this->db->prepare('SELECT id, titre, contenu from article WHERE id = :id');
         $stm->bindParam(":id", $id);

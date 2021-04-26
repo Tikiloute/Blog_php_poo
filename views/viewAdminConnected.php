@@ -36,7 +36,7 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
             <h3 class="write-article intro">Votre liste d'article</h3>
             <hr class="hr">
             <br>
-            <select class="form-select w-auto mx-auto" aria-label="select" onChange="window.location.href=this.value">
+            <select class="form-select mx-auto selectMd" aria-label="select" onChange="window.location.href=this.value">
                 <option selected class="">Choisissez l'article sur lequel vous souhaitez aller</option>
             <?php 
                 foreach($article as $articles){
@@ -87,6 +87,7 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
             <br> 
         <?php 
         }
+            if(!empty($reportComment) && $round>1){
         ?>
             <!-- pagination -->
             <nav aria-label="Page navigation example">
@@ -127,5 +128,6 @@ if(!empty($_GET['connected']) && $_GET['connected']==="ok"){
             </ul>
             </nav>
 <?php
+            }
 $contenu = ob_get_clean();
 require_once('template.php');

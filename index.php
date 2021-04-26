@@ -16,7 +16,7 @@ if(empty($_GET["action"])){
         break;
 
         case "article" :
-            if(isset($_GET['id']) && isset($_GET['pagingComment']) && $_GET['id'] > 0){
+            if(isset($_GET['id'], $_GET['pagingComment']) && $_GET['id'] > 0){
                 $commentController->comment();
                 $articleController->article();
             }else{
@@ -68,6 +68,10 @@ if(empty($_GET["action"])){
 
         case "deleteComment" :
             $administratorController->deleteComment();
+        break;
+
+        case "contact" :
+            $administratorController->contact();
         break;
         
    }

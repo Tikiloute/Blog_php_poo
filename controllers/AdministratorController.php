@@ -140,4 +140,17 @@ class AdministratorController
         }
     }
 
-}
+    public function contact(){
+        require_once('views\viewContact.php');
+    if(!empty($_POST['subject']) && !empty($_POST['email']) && !empty($_POST['emailContent'])){
+        if(isset($_POST['subject'], $_POST['email'], $_POST['emailContent']) && isset($_GET['email']) && $_GET['email']==='sent'){
+            $subject = $_POST['subject'];
+            $mail=  $_POST['email'];
+            $message = $_POST['emailContent'];
+          //  mail($mail, $subject, $message); mis de coté en attendant de mettre le site sur un serveur réel
+        }else{
+                echo "problème d'envoi";
+        }
+    }
+    }
+} // end of classe

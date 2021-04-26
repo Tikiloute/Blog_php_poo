@@ -20,7 +20,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5 color-navBar">
             <div class="container-fluid">
-                <a class="navbar-brand color-navBar" href="accueil">Blog de Jean Forteroche</a>
+                <a class="navbar-brand color-navBar titreAccueil" href="accueil">Blog de Jean Forteroche</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
@@ -31,6 +31,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="articles&page=1">Articles</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="contact">Me contacter</a>
                         </li>
                     </ul>
                 </div>

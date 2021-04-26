@@ -84,11 +84,11 @@ if(isset($_GET["report"])){
       </li>
 <?php 
   for($i=1; $i <=$round; $i++){
-    if(isset($_GET['pagingComment']) && $_GET['pagingComment'] != $i){
+    if(isset($_GET['pagingComment']) && $_GET['pagingComment'] != $i && $_GET['pagingComment'] <= $round){
 ?>
       <li class="page-item d-none d-sm-block d-xl-block d-lg-block "><a class="page-link" href="article&id=<?=$_GET['id']?>&pagingComment=<?=$i?>"><b><?= $i?></b></a></li>
 <?php
-    }elseif($round>1){
+    }else{
 ?>
         <li class="page-item d-none d-sm-block d-xl-block d-lg-block disabled"><a class="page-link" href="article&id=<?=$_GET['id']?>&pagingComment=<?=$i?>"><b><?= $i ?></b></a></li>
 <?php 
